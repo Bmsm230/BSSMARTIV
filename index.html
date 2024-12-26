@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BS IV SMART Pump</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">BS IV SMART</div>
+
+        <!-- Left Panel -->
+        <div class="left-panel">
+            <div class="display" id="display">
+                <div class="display-title">Channel: None</div>
+                <div class="display-info">Primary Medication: --</div>
+                <div class="display-info">Primary Rate: --</div>
+                <div class="display-info">Primary VTBI: --</div>
+                <div class="display-info">Primary Time: --</div>
+                <div class="display-info">Secondary Medication: --</div>
+                <div class="display-info">Secondary Rate: --</div>
+                <div class="display-info">Secondary VTBI: --</div>
+                <div class="display-info">Secondary Time: --</div>
+                <button class="secondary-button" id="secondary-button" onclick="openSecondaryPopup()">Secondary</button>
+            </div>
+            <div class="keypad">
+                <button>1</button>
+                <button>2</button>
+                <button>3</button>
+                <button>4</button>
+                <button>5</button>
+                <button>6</button>
+                <button>7</button>
+                <button>8</button>
+                <button>9</button>
+                <button>*</button>
+                <button>0</button>
+                <button>#</button>
+            </div>
+        </div>
+
+        <!-- Right Panel -->
+        <div class="right-panel">
+            <button class="button" onclick="openChannelPopup()">Channel Select</button>
+            <button class="button" onclick="pauseInfusion()">Pause</button>
+            <button class="button silence-button" onclick="silence()">Silence</button>
+            <button class="button" onclick="restartSimulation()">Restart</button>
+            <button class="button" onclick="channelOff()">Channel Off</button>
+
+            <div class="pump-status">
+                <div>Pump Status</div>
+                <div class="pump-light" id="pump-light"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Channel Popup -->
+    <div class="popup" id="channel-popup">
+        <h3>Select Channel</h3>
+        <button onclick="selectChannel('Channel A')">Channel A</button>
+        <button onclick="selectChannel('Channel B')">Channel B</button>
+        <button onclick="selectChannel('Channel C')">Channel C</button>
+        <button onclick="closePopup('channel-popup')">Close</button>
+    </div>
+
+    <!-- Primary Infusion Popup -->
+    <div class="popup" id="infusion-popup">
+        <h3>Primary Infusion Setup</h3>
+        <select id="medication-select"></select>
+        <div id="concentration-section" style="display: none;">
+            <label>Select Concentration:</label>
+            <select id="concentration-select"></select>
+        </div>
+        <input id="rate-input" type="number" placeholder="Rate (mL/hr)">
+        <input id="vtbi-input" type="number" placeholder="VTBI (mL)">
+        <input id="time-input" type="number" placeholder="Time (hours)">
+        <button onclick="confirmPrimaryInfusion()">Confirm</button>
+        <button onclick="closePopup('infusion-popup')">Close</button>
+    </div>
+
+    <!-- Secondary Infusion Popup -->
+    <div class="popup" id="secondary-popup">
+        <h3>Secondary Infusion Setup</h3>
+        <select id="secondary-medication-select"></select>
+        <input id="secondary-vtbi-input" type="number" placeholder="Enter VTBI (mL)">
+        <input id="secondary-time-input" type="number" placeholder="Enter Duration (hours)">
+        <button onclick="confirmSecondaryInfusion()">Start Secondary</button>
+        <button onclick="closePopup('secondary-popup')">Close</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

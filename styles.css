@@ -1,0 +1,12 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #eef2f7;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Other styles omitted for brevity (add the CSS content from above) */
